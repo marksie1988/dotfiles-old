@@ -5,6 +5,8 @@ cd ~
 git clone this repo
 
 cd dotfiles
+chmod +x install.sh
+chmod +x uninstall.sh
 ```
 ### Run install
 ```
