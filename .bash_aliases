@@ -1,3 +1,4 @@
+# ver: 1.0
 alias gti='git'
 #alias tmux='tmux -2'
 alias less='less -R'
