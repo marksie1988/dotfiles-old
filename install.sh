@@ -52,8 +52,8 @@ for file in $(find . -maxdepth 1 -name ".*" -type f  -printf "%f\n" ); do
     echo "Time to install $latest_ver of $file you are running $installed_ver"
     if [ $installed_ver == 0 ]; then
       if [ -e ~/$file ]; then
-        mkdir ~/dotfilebkp
-        mv -f ~/dotfilebkp/$file{,.dtbak}
+        mkdir -p ~/dotfilebkp
+        mv -f $file ~/dotfilebkp/$file{,.dtbak}
       fi
     fi
     ln -sfn $PWD/$file ~/$file
