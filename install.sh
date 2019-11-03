@@ -55,6 +55,6 @@ for file in $(find . -maxdepth 1 -name ".*" -type f  -printf "%f\n" ); do
     ln -sfn $PWD/$file ~/$file
     echo "New version $latest_ver now installed!"
   else
-    echo "$installed_ver is the latest Version, Already Installed!"
+    echo "$installed_ver is the latest Version of $file, Already Installed!"
   fi
 done
