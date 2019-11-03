@@ -33,6 +33,10 @@ do_version_check() {
 for file in $(find . -maxdepth 1 -name ".*" -type f  -printf "%f\n" ); do
   if [ -e ~/$file ]; then
     installed_ver=$(grep -oP 'ver:\s*\K[\d.]+' ~/$file)
+    if [[ !$installed_ver ]]
+    then
+      installed_ver=0
+    fi
   else
     installed_ver=0
   fi
