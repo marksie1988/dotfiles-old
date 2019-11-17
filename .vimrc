@@ -1,4 +1,4 @@
-# ver: 1.0
+" ver: 1.0
 " execute pathogen#infect()
 set mouse=
 set ttymouse=
