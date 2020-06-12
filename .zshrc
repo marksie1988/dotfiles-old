@@ -80,11 +80,10 @@ bindkey -s "^l" "clear\n"
 bindkey -s "^d" "dlfile\n"
 # Source configs
 for f in ~/.config/shellconfig/*; do source "$f"; done
-#source /home/brodie/.config/broot/launcher/bash/br
 # Load zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # Suggest aliases for commands
-source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh 2>/dev/null
+source /usr/local/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh 2>/dev/null
 # Search repos for programs that can't be found
 source /usr/share/doc/pkgfile/command-not-found.zsh 2>/dev/null
 

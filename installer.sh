@@ -10,7 +10,8 @@ ln -sf $path/spaceship-prompt/spaceship.zsh /usr/local/share/zsh/site-functions/
 
 #ZSH plugins directory
 [ ! -d /usr/share/zsh/plugins/ ] && mkdir -p /usr/share/zsh/plugins/
-ln -sf $path/files/zsh/plugins /usr/share/zsh/plugins/
+ln -sf $path/files/zsh/plugins /usr/local/share/zsh/plugins/
+
 
 # Home directory
 ln -sf $path/.bash_profile $HOME/.bash_profile
