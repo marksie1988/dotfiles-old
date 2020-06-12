@@ -9,7 +9,7 @@ path=$(pwd)
 ln -sf $path/spaceship-prompt/spaceship.zsh /usr/local/share/zsh/site-functions/prompt_spaceship_setup
 
 #ZSH plugins directory
-[ ! -d /usr/share/zsh/plugins/ ] && mkdir -p /usr/share/zsh/plugins/
+[ ! -d /usr/local/share/zsh/plugins/ ] && mkdir -p /usr/local/share/zsh/plugins/
 ln -sf $path/files/zsh/plugins /usr/local/share/zsh/plugins/
 
 
