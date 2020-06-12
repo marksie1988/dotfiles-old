@@ -11,7 +11,6 @@ ln -sf $path/files/zsh/plugins /usr/share/zsh/plugins/
 
 # Home directory
 ln -sf $path/.bash_profile $HOME/.bash_profile
-ln -sf $path/.bashrc $HOME/.bashrc
 ln -sf $path/.gitconfig $HOME/.gitconfig
 ln -sf $path/.profile $HOME/.profile
 ln -sf $path/.zshenv $HOME/.zshenv
