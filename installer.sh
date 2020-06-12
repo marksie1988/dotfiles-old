@@ -1,6 +1,10 @@
 #!/bin/sh
 path=$(pwd)
 
+#Install spaceship theme
+git clone https://github.com/denysdovhan/spaceship-prompt.git
+ln -sf $path/spaceship-prompt/spaceship.zsh /usr/local/share/zsh/site-functions/prompt_spaceship_setup
+
 #ZSH plugins directory
 [ ! -d /usr/share/zsh/plugins/ ] && mkdir -p /usr/share/zsh/plugins/
 ln -sf $path/files/zsh/plugins /usr/share/zsh/plugins/
