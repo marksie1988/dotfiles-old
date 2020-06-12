@@ -5,9 +5,7 @@ export PATH
 export WINIT_HIDPI_FACTOR=1.0
 export EDITOR="nvim"
 export READER="zathura"
-export VISUAL="nvim"
-export TERMINAL="alacritty"
-export BROWSER="brave"
+export VISUAL="vim"
 export VIDEO="mpv"
 export IMAGE="sxiv"
 export COLORTERM="truecolor"
@@ -176,18 +174,11 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
-export FFF_TRASH_CMD="trash-put"
-export FFF_TRASH=~/.local/share/Trash/files
 export FFF_KEY_MKDIR="f"
 export FFF_KEY_MKFILE="i"
-export FFF_TRASH=~/.local/share/Trash/files
-export FFF_FAV1=~/videos/anime
-export FFF_FAV2=~/documents/Uni
-export FFF_FAV3=~/pictures/Wallpapers/wallpapers
 export FFF_MARK_FORMAT="> %f"
 export FFF_FILE_FORMAT=" %f"
 
-export NNN_BMS='v:~/videos;a:~/videos/anime'
 export NNN_TRASH=1
 export NNN_PLUG='o:fzopen'
 
