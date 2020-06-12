@@ -2,7 +2,13 @@
 path=$(pwd)
 
 #Install Zsh
-
+wget -O zsh.tar.xz https://sourceforge.net/projects/zsh/files/latest/download
+tar xf zsh.tar.xz
+cd zsh
+./configure
+make install
+cd ..
+rm -rf zsh && rm -rf zsh.tar.xz
 
 #Install spaceship theme
 [ ! -d $path/spaceship-prompt/ ] && git clone https://github.com/denysdovhan/spaceship-prompt.git
