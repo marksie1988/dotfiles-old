@@ -6,11 +6,6 @@ path=$(pwd)
 [ ! -d /usr/local/share/zsh/site-functions/ ] && mkdir -p /usr/local/share/zsh/site-functions/
 ln -sf $path/spaceship-prompt/spaceship.zsh /usr/local/share/zsh/site-functions/prompt_spaceship_setup
 
-#ZSH plugins directory
-[ ! -d /usr/local/share/zsh/plugins/ ] && mkdir -p /usr/local/share/zsh/plugins/
-ln -sf $path/files/zsh/plugins /usr/local/share/zsh/
-
-
 # Home directory
 ln -sf $path/.bash_profile $HOME/.bash_profile
 ln -sf $path/.gitconfig $HOME/.gitconfig

@@ -2,10 +2,12 @@
 
 - gcc
 - ncurses-devel
-- zsh 5.8
+- git
+- Powerline Fonts
+- zsh (for Centos from source as below)
 
 ```
-sudo yum install -y gcc ncurses-devel
+sudo yum install -y gcc ncurses-devel git
 ```
 
 ```
@@ -22,7 +24,7 @@ rm -rf download zsh-5.8
 
 ```
 cd ~
-git clone this repo
+git clone https://github.com/marksie1988/dotfiles.git
 
 cd dotfiles
 chmod +x installer.sh
