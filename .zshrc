@@ -64,11 +64,6 @@ zle -N zle-keymap-select
 # ci", ci', ci`, di", etc
 autoload -U select-quoted
 zle -N select-quoted
-for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  done
-done
 
 # ci{, ci(, ci<, di{, etc
 autoload -U select-bracketed
