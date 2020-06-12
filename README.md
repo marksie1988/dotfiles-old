@@ -3,8 +3,7 @@
 - gcc
 - ncurses-devel
 - git
-- Powerline Fonts
-- zsh (for Centos from source as below)
+- zsh (5.3.1 minuimum) (for Centos from source as below)
 
 ```
 sudo yum install -y gcc ncurses-devel git
