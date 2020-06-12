@@ -1,5 +1,5 @@
 typeset -U PATH path
-path=("$HOME/scripts" "$HOME/scripts/alsa" "$HOME/scripts/lf" "$HOME/scripts/i3" "$HOME/scripts/pulse" "$HOME/scripts/polybar" "$HOME/scripts/bspwm" "$HOME/scripts/lemonbar" "$HOME/scripts/transmission" "$(ruby -e 'puts Gem.user_dir')/bin" "$HOME/go/bin" "$HOME/.cargo/bin" "$HOME/.npm-global" "$path[@]")
+path=("$HOME/scripts" "$HOME/scripts/alsa" "$HOME/scripts/lf" "$HOME/scripts/i3" "$HOME/scripts/pulse" "$HOME/scripts/polybar" "$HOME/scripts/bspwm" "$HOME/scripts/lemonbar" "$HOME/scripts/transmission" "$HOME/.cargo/bin" "$HOME/.npm-global" "$path[@]")
 export PATH
 
 export WINIT_HIDPI_FACTOR=1.0
