@@ -22,6 +22,7 @@ rm -rf download zsh-5.8
 ### Set Zsh as default shell
 
 ```
+echo "/usr/local/bin/zsh" >> /etc/shells
 chsh -s $(which zsh)
 ```
 
