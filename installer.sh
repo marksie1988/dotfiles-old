@@ -7,8 +7,8 @@ path=$(pwd)
 ln -sf $path/spaceship-prompt/spaceship.zsh /usr/local/share/zsh/site-functions/prompt_spaceship_setup
 
 # Zsh Plugins
-git -C /usr/local/share/plugins https://github.com/zsh-users/zsh-syntax-highlighting.git
-git -C /usr/local/share/plugins https://github.com/MichaelAquilina/zsh-you-should-use.git
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/local/share/plugins
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git /usr/local/share/plugins
 
 # Home directory
 ln -sf $path/.bash_profile $HOME/.bash_profile
