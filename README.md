@@ -9,8 +9,8 @@
 sudo yum install -y gcc ncurses-devel git
 ```
 
+### Install Zsh
 ```
-#Install Zsh
 wget https://sourceforge.net/projects/zsh/files/zsh/5.8/zsh-5.8.tar.xz/download
 tar -xvJf download
 cd zsh-5.8/
@@ -19,7 +19,13 @@ make && sudo make install
 rm -rf download zsh-5.8
 ```
 
-## Installation
+### Set Zsh as default shell
+
+```
+chsh -s $(which zsh)
+```
+
+## Add custom dot files
 
 ```
 cd ~
