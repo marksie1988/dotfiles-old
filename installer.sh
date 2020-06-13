@@ -28,8 +28,8 @@ ln -sf $path/config/starship.toml $HOME/.config/starship.toml
 # Local directroy
 [ ! -d $HOME/.local ] && mkdir -p $HOME/.local/share
 [ ! -d $HOME/.local/share ] && mkdir $HOME/.local/share
-[ -d $HOME/.local/share/fonts ] && rm -r $HOME/.local/share/fonts
-ln -sf $path/.local/share/fonts $HOME/.local/share/fonts
+[ -d $HOME/.fonts ] && rm -r $HOME/.fonts
+ln -sf $path/.local/share/fonts $HOME/.fonts
 
 # Var directory
 [ ! -d /var ] && sudo mkdir -p /var/spool/cron
