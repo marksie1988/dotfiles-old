@@ -28,7 +28,7 @@ ln -sf $path/config/starship.toml $HOME/.config/starship.toml
 # Local directroy
 [ ! -d $HOME/.local ] && mkdir -p $HOME/.local/share
 [ ! -d $HOME/.local/share ] && mkdir $HOME/.local/share
-[ -d $HOME/.fonts ] && rm -r $HOME/.fonts
+[ -d $HOME/.fonts ] && mkdir $HOME/.fonts
 ln -sf $path/.local/share/fonts $HOME/.fonts
 
 # Var directory
