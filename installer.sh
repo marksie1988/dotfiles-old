@@ -7,6 +7,8 @@ path=$(pwd)
 ln -sf $path/spaceship-prompt/spaceship.zsh /usr/local/share/zsh/site-functions/prompt_spaceship_setup
 
 # Zsh Plugins
+[ -d /usr/local/share/plugins/zsh-syntax-highlighting ] && rm -rf /usr/local/share/plugins/zsh-syntax-highlighting
+[ -d /usr/local/share/plugins/zsh-you-should-use ] && rm -rf /usr/local/share/plugins/zsh-you-should-use
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/local/share/plugins/zsh-syntax-highlighting
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git /usr/local/share/plugins/zsh-you-should-use
 
