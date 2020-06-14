@@ -27,12 +27,14 @@ prompt_install() {
 }
 
 zsh_install(){
-  echo -n "ZSH not installed, installing now"
-  wget https://sourceforge.net/projects/zsh/files/zsh/5.8/zsh-5.8.tar.xz/download
-  tar -xvJf download
-  cd zsh-5.8/
-  ./configure
-  make && sudo make install
+  if ! [ -x "$(command -v zsh)" ]; then
+    echo -n "ZSH not installed, installing now"
+    wget https://sourceforge.net/projects/zsh/files/zsh/5.8/zsh-5.8.tar.xz/download
+    tar -xvJf download
+    cd zsh-5.8/
+    ./configure
+    make && sudo make install
+  fi
 }
 
 check_for_software() {
