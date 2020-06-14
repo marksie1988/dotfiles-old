@@ -1,12 +1,9 @@
 ## Requirements
 
-- gcc
-- ncurses-devel
 - git
-- zsh (5.3.1 minuimum) (for Centos from source as below)
 
 ```
-sudo yum install -y gcc ncurses-devel git
+sudo yum install -y git
 ```
 
 ### Install Zsh
