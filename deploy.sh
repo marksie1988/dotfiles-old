@@ -112,8 +112,6 @@ check_for_software ncurses-devel
 echo
 check_for_powerline
 echo
-check_for_spaceship
-echo
 check_for_software zsh
 echo 
 check_for_software vim
