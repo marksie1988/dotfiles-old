@@ -45,7 +45,7 @@ set_prompt() {
 	fi
 
 	# ]
-	PS1+=" %{$fg_bold[green]%}❯{$reset_color%}"
+	PS1+=" %{$fg_bold[green]%}❯%{$reset_color%}"
 }
 
 precmd_functions+=set_prompt
