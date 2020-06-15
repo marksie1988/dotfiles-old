@@ -1,6 +1,8 @@
 ## Requirements
 
 - git
+- Powerline Fonts - https://github.com/powerline/fonts.git
+
 
 ```
 sudo yum install -y git

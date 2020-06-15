@@ -39,6 +39,7 @@ zsh_install(){
 
 check_for_software() {
 	echo "Checking to see if $1 is installed"
+	if 
 	if ! [ -x "$(command -v $1)" ]; then
 		if [ -x "$(command -v yum)" ]; then
     	if [ $1 = "zsh" ]; then
@@ -51,24 +52,6 @@ check_for_software() {
 		echo "$1 is installed."
 	fi
 }
-check_for_powerline() {
-	echo "Checking for the powerline fonts"
-	$font_dir = "/usr/share/fonts"
-	if ! [ -d $font_dir ]; then
-  	mkdir -p $font_dir
-	fi
-	# Set source and target directories
-	powerline_fonts_dir="fonts"
-
-	echo "Copying fonts..."
-	find "$powerline_fonts_dir" \( -name "$prefix*.[ot]tf" -or -name "$prefix*.pcf.gz" \) -type f -print0 | xargs -0 -n1 -I % cp "%" "$font_dir/"
-	# Reset font cache on Linux
-	if which fc-cache >/dev/null 2>&1 ; then
-		echo "Resetting font cache, this may take a moment..."
-		fc-cache -f "$font_dir"
-	fi
-}
-
 check_default_shell() {
 	if [ -z "${SHELL##*zsh*}" ] ;then
 			echo "Default shell is zsh."
@@ -109,8 +92,6 @@ git submodule update --init --recursive
 check_for_software gcc
 echo
 check_for_software ncurses-devel
-echo
-check_for_powerline
 echo
 check_for_software zsh
 echo 
