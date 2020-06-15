@@ -10,6 +10,9 @@
 
 	git config --global push.default current
 
+# Auto cd
+	setopt auto_cd
+
 # Aliases
 	alias v="vim -p"
 	mkdir -p /tmp/log
