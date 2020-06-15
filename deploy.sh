@@ -40,10 +40,12 @@ zsh_install(){
 check_for_software() {
 	echo "Checking to see if $1 is installed"
 	if ! [ -x "$(command -v $1)" ]; then
-    if [ $1 = "zsh" ]; then
-      zsh_install
-    else
-		  prompt_install $1
+		if [ -x "$(command -v yum)" ]; then
+    	if [ $1 = "zsh" ]; then
+      	zsh_install
+    	else
+		 		prompt_install $1
+			fi
     fi
 	else
 		echo "$1 is installed."

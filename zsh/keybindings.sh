@@ -46,10 +46,15 @@
 	zle -N add_sudo
 	bindkey "^s" add_sudo
 	
-	# Home - Navigates to the current root workspace
+# Home - Navigates to the current root workspace
 	function git_root() {
 		BUFFER="cd $(git rev-parse --show-toplevel || echo ".")"
 		zle accept-line
 	}
 	zle -N git_root
 	bindkey "^h" git_root
+
+bindkey -M menuselect 'left' vi-backward-char
+bindkey -M menuselect 'down' vi-down-line-or-history
+bindkey -M menuselect 'right' vi-forward-char
+bindkey -M menuselect 'up' vi-up-line-or-history
