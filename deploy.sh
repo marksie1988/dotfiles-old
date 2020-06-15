@@ -53,12 +53,19 @@ check_for_software() {
 }
 check_for_powerline() {
 	echo "Checking for the powerline fonts"
-	if ! [ -f "~/.fonts/PowerlineSymbols.otf" ]; then
-		sudo mv fonts/powerline/font/PowerlineSymbols.otf .fonts/
-		sudo fc-cache -vf .fonts/
-		sudo mv fonts/powerline/font/10-powerline-symbols.conf /etc/fonts/conf.d/
-	else
-		echo "Font is installed"
+	$font_dir = "/usr/share/fonts"
+	if ! [ -d $font_dir ]; then
+  	mkdir -p $font_dir
+	fi
+	# Set source and target directories
+	powerline_fonts_dir="fonts"
+
+	echo "Copying fonts..."
+	find "$powerline_fonts_dir" \( -name "$prefix*.[ot]tf" -or -name "$prefix*.pcf.gz" \) -type f -print0 | xargs -0 -n1 -I % cp "%" "$font_dir/"
+	# Reset font cache on Linux
+	if which fc-cache >/dev/null 2>&1 ; then
+		echo "Resetting font cache, this may take a moment..."
+		fc-cache -f "$font_dir"
 	fi
 }
 
