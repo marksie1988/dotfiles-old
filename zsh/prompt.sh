@@ -23,7 +23,7 @@ set_prompt() {
 		if [ $STATUS -gt 0 ]; then 
  			PS1+="%{$fg[green]%}+$(echo $STATUS | awk '{$1=$1};1')%{$reset_color%}"
  		fi
-    source ~/dotfiles/zsh/sections/git_status.zsh
+    source ~/dotfiles/zsh/sections/git_status.sh
  	fi
 
 

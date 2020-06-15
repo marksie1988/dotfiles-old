@@ -25,7 +25,6 @@ GIT_STATUS_DIVERGED="${GIT_STATUS_DIVERGED="⇕"}"
 # Section
 # ------------------------------------------------------------------------------
 
-git_status() {
   local INDEX git_status=""
 
   INDEX=$(command git status --porcelain -b 2> /dev/null)
@@ -99,7 +98,5 @@ git_status() {
 
   if [[ -n $git_status ]]; then
     # Status prefixes are colorized
-    echo -n "%{$fg[$GIT_STATUS_COLOR]%}$GIT_STATUS_PREFIX$git_status$GIT_STATUS_SUFFIX%{%b%f%}"
+    PS1+="%{$fg[$GIT_STATUS_COLOR]%}$GIT_STATUS_PREFIX$git_status$GIT_STATUS_SUFFIX%{%b%f%}"
   fi
-
-}
