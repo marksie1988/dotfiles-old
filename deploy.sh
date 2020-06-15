@@ -69,12 +69,6 @@ check_for_powerline() {
 	fi
 }
 
-check_for_spaceship() {
-	if ! [ -f "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"]; then
-		ln -sf "$PWD/theme/spaceship-prompt/spaceship.zsh" "/usr/local/share/zsh/site-functions/prompt_spaceship_setup"
-	fi
-}
-
 check_default_shell() {
 	if [ -z "${SHELL##*zsh*}" ] ;then
 			echo "Default shell is zsh."
