@@ -6,9 +6,6 @@ setopt PROMPT_SUBST
 
 set_prompt() {
 
-	# [
-	PS1="["
-
 	# Path: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 	PS1+="%{$fg_bold[blue]%}${PWD/#$HOME/~}%{$reset_color%}"
 
@@ -17,7 +14,7 @@ set_prompt() {
 
  	# Git
  	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
- 		PS1+='on '
+ 		PS1+=' on '
  		PS1+="%{$fg[magenta]%} $(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
 		STATUS=$(git status --short | wc -l)
 		if [ $STATUS -gt 0 ]; then 
@@ -48,7 +45,7 @@ set_prompt() {
 	fi
 
 	# ]
-	PS1+="]: "
+	PS1+=" %{$fg_bold[green]%}❯{$reset_color%}"
 }
 
 precmd_functions+=set_prompt
