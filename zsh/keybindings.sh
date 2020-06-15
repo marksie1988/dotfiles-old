@@ -63,3 +63,5 @@ bindkey -M menuselect 'up' vi-up-line-or-history
 # Bind home / end 
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[4~"   end-of-line
