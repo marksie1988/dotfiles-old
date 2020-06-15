@@ -54,7 +54,12 @@
 	zle -N git_root
 	bindkey "^h" git_root
 
+# Bind arrow keys
 bindkey -M menuselect 'left' vi-backward-char
 bindkey -M menuselect 'down' vi-down-line-or-history
 bindkey -M menuselect 'right' vi-forward-char
 bindkey -M menuselect 'up' vi-up-line-or-history
+
+# Bind home / end 
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
