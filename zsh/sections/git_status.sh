@@ -98,5 +98,5 @@ GIT_STATUS_DIVERGED="${GIT_STATUS_DIVERGED="⇕"}"
 
   if [[ -n $git_status ]]; then
     # Status prefixes are colorized
-    PS1+="%{$fg[$GIT_STATUS_COLOR]%}$GIT_STATUS_PREFIX$git_status$GIT_STATUS_SUFFIX%{%b%f%}"
+    PS1+="%{$fg[$GIT_STATUS_COLOR]%}$GIT_STATUS_PREFIX$git_status$GIT_STATUS_SUFFIX%{$reset_color%}"
   fi
