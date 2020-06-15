@@ -13,3 +13,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = https://github.com/powerline/fonts.git
+[submodule "theme/spaceship-prompt"]
+	path = theme/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt.git

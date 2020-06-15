@@ -58,7 +58,7 @@ plugins=(
 )
 
 for plugin ($plugins); do
-    fpath=(~/dotfiles/zsh/plugins/oh-my-zsh/plugins/$plugin $fpath)
+    fpath=(~/dotfiles/zsh/plugins/ohmyzsh/plugins/$plugin $fpath)
 done
 
 compinit
