@@ -51,6 +51,16 @@ check_for_software() {
 		echo "$1 is installed."
 	fi
 }
+check_for_powerline() {
+	echo "Checking for the powerline fonts"
+	if ! [ -f "~/.fonts/PowerlineSymbols.otf" ]; then
+		sudo mv fonts/powerline/font/PowerlineSymbols.otf .fonts/
+		sudo fc-cache -vf .fonts/
+		sudo mv fonts/powerline/font/10-powerline-symbols.conf /etc/fonts/conf.d/
+	else
+		echo "Font is installed"
+	fi
+}
 
 check_default_shell() {
 	if [ -z "${SHELL##*zsh*}" ] ;then
@@ -92,6 +102,8 @@ git submodule update --init --recursive
 check_for_software gcc
 echo
 check_for_software ncurses-devel
+echo
+check_for_powerline
 echo
 check_for_software zsh
 echo 
