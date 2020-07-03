@@ -62,6 +62,7 @@ check_default_shell() {
 		stty $old_stty_cfg && echo
 		if echo "$answer" | grep -iq "^y" ;then
 			chsh -s $(which zsh)
+			mkdir -p $HOME/.cache/zsh
 		else
 			echo "Warning: Your configuration won't work properly. If you exec zsh, it'll exec tmux which will exec your default shell which isn't zsh."
 		fi
