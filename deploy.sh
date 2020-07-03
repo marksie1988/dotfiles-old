@@ -39,7 +39,6 @@ zsh_install(){
 
 check_for_software() {
 	echo "Checking to see if $1 is installed"
-	if 
 	if ! [ -x "$(command -v $1)" ]; then
 		if [ -x "$(command -v yum)" ]; then
     	if [ $1 = "zsh" ]; then
