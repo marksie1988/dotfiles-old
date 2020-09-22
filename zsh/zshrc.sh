@@ -2,6 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Vars
+	mkdir -p ~/.cache/zsh/
 	HISTFILE=~/.cache/zsh/history
   HISTSIZE=1000
 	SAVEHIST=1000 
@@ -12,13 +13,6 @@
 
 # Auto cd
 	setopt auto_cd
-
-# Aliases
-	alias v="vim -p"
-	mkdir -p /tmp/log
-	
-	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
-	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
 # Settings
 	export VISUAL=vim
@@ -63,6 +57,9 @@ done
 
 compinit
 
+source ~/dotfiles/zsh/keybindings.sh
+source ~/dotfiles/zsh/aliases.sh
+
 source ~/dotfiles/zsh/plugins/ohmyzsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/ohmyzsh/lib/key-bindings.zsh
 source ~/dotfiles/zsh/plugins/ohmyzsh/lib/completion.zsh
@@ -70,8 +67,6 @@ source ~/dotfiles/zsh/plugins/vi-mode.plugin.zsh
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
-source ~/dotfiles/zsh/keybindings.sh
-source ~/dotfiles/zsh/aliases.sh
 
 # Fix for arrow-key searching
 # start typing + [Up-Arrow] - fuzzy find history forward
