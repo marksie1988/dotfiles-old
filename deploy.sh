@@ -7,10 +7,10 @@ prompt_install() {
 	if echo "$answer" | grep -iq "^y" ;then
 		# This could def use community support
 		if [ -x "$(command -v apt-get)" ]; then
-			sudo apt-get install $1 -y
+			sudo apt install $1 -y
 
-    elif [ -x "$(command -v yum)" ]; then
-      sudo yum install -y $1
+    	elif [ -x "$(command -v yum)" ]; then
+     		sudo yum install -y $1
 
 		elif [ -x "$(command -v brew)" ]; then
 			brew install $1
@@ -34,6 +34,7 @@ zsh_install(){
     cd zsh-5.8/
     ./configure
     make && sudo make install
+	sudo echo "$(which zsh)" >> /etc/shells
   fi
 }
 
@@ -41,9 +42,9 @@ check_for_software() {
 	echo "Checking to see if $1 is installed"
 	if ! [ -x "$(command -v $1)" ]; then
 		if [ -x "$(command -v yum)" ]; then
-    	if [ $1 = "zsh" ]; then
-      	zsh_install
-    	else
+    		if [ $1 = "zsh" ]; then
+      			zsh_install
+    		else
 		 		prompt_install $1
 			fi
     fi
@@ -61,7 +62,6 @@ check_default_shell() {
 		answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 		stty $old_stty_cfg && echo
 		if echo "$answer" | grep -iq "^y" ;then
-			sudo echo "$(which zsh)" >> /etc/shells
 			chsh -s $(which zsh)
 		else
 			echo "Warning: Your configuration won't work properly. If you exec zsh, it'll exec tmux which will exec your default shell which isn't zsh."
@@ -99,9 +99,7 @@ check_for_software vim
 echo
 check_for_software tmux
 echo
-
 check_default_shell
-
 echo
 echo -n "Would you like to backup your current dotfiles? (y/n) "
 old_stty_cfg=$(stty -g)
