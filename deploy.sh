@@ -47,6 +47,9 @@ check_for_software() {
     		else
 		 		prompt_install $1
 			fi
+		else
+			prompt_install $1
+		fi	
     fi
 	else
 		echo "$1 is installed."
