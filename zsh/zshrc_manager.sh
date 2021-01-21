@@ -1,6 +1,6 @@
 time_out () { perl -e 'alarm shift; exec @ARGV' "$@"; }
 
-VERSION="v0.1.0"
+VERSION="v0.2.0"
 
 # Run tmux if exists
 #if command -v tmux>/dev/null; then
@@ -26,9 +26,9 @@ else
 	echo "Updates Detected -"
 	echo "Installed Version: $VERSION"
 	echo "Latest Version: $LATEST_VERSION"
-	({cd ~/dotfiles} &> /dev/null && git log ..@{u} --pretty=format:%Cred%aN:%Creset\ %s\ %Cgreen%cd)
+	({cd ~/dotfiles} &> /dev/null && git log $LATEST_VERSION ..@{u} --pretty=format:%Cred%aN:%Creset\ %s\ %Cgreen%cd)
 	echo "Setting up..."
-	({cd ~/dotfiles} &> /dev/null && git pull -q && git submodule update --init --recursive)
+	({cd ~/dotfiles} &> /dev/null && git pull -q && git checkout $LATEST_VERSION && git submodule update --init --recursive)
 fi
 
 source ~/dotfiles/zsh/zshrc.sh
