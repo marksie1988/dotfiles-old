@@ -1,7 +1,5 @@
 time_out () { perl -e 'alarm shift; exec @ARGV' "$@"; }
 
-VERSION="v0.2.0"
-
 # Run tmux if exists
 #if command -v tmux>/dev/null; then
 #	if [ "$DISABLE_TMUX" = "true" ]; then
@@ -14,21 +12,16 @@ VERSION="v0.2.0"
 #fi
 
 echo "Checking for updates."
-LATEST_VERSION=$(curl -s https://api.github.com/repos/marksie1988/dotfiles/releases/latest \
-| grep "tag_name" \
-| awk '{print substr($2, 2, length($2)-3)}')
+({cd ~/dotfiles && git fetch -q} &> /dev/null)
 
-
-if [ $VERSION = $LATEST_VERSION ]
+if [ $({cd ~/dotfiles} &> /dev/null && git rev-list HEAD...origin/master | wc -l) = 0 ]
 then
-	echo "Already using $LATEST_VERSION."
+	echo "Already up to date."
 else
-	echo "Updates Detected -"
-	echo "Installed Version: $VERSION"
-	echo "Latest Version: $LATEST_VERSION"
-	({cd ~/dotfiles} &> /dev/null && git log $LATEST_VERSION ..@{u} --pretty=format:%Cred%aN:%Creset\ %s\ %Cgreen%cd)
+	echo "Updates Detected:"
+	({cd ~/dotfiles} &> /dev/null && git log ..@{u} --pretty=format:%Cred%aN:%Creset\ %s\ %Cgreen%cd)
 	echo "Setting up..."
-	({cd ~/dotfiles} &> /dev/null && git pull -q && git checkout $LATEST_VERSION && git submodule update --init --recursive)
+	({cd ~/dotfiles} &> /dev/null && git pull -q && git submodule update --init --recursive)
 fi
 
 source ~/dotfiles/zsh/zshrc.sh
