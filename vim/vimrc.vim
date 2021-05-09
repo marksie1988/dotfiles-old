@@ -1,167 +1,185 @@
-" General Vim settings
-	syntax on
-	let mapleader=","
-	set autoindent
-	set tabstop=4
-	set shiftwidth=4
-	set dir=/tmp/
-	set relativenumber 
-	set number
+" init autocmd
+autocmd!
+" set script encoding
+scriptencoding utf-8
+" stop loading config if it's on tiny or small
+if !1 | finish | endif
 
-	autocmd Filetype html setlocal sw=2 expandtab
-	autocmd Filetype javascript setlocal sw=4 expandtab
+set number
+set nocompatible
+syntax enable
+set fileencodings=utf-8,sjis,euc-jp,latin
+set encoding=utf-8
+set title
+set autoindent
+set background=dark
+set nobackup
+set hlsearch
+set showcmd
+set cmdheight=1
+set laststatus=2
+set scrolloff=10
+set expandtab
+"let loaded_matchparen = 1
+set shell=fish
+set backupskip=/tmp/*,/private/tmp/*
 
-	set hlsearch
-	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
-	nnoremap <C-c> :set norelativenumber<CR>:set nonumber<CR>:echo "Line numbers turned off."<CR>
-	nnoremap <C-n> :set relativenumber<CR>:set number<CR>:echo "Line numbers turned on."<CR>
+" incremental substitution (neovim)
+if has('nvim')
+  set inccommand=split
+endif
 
-	nnoremap n nzzzv
-	nnoremap N Nzzzv
+" Suppress appending <PasteStart> and <PasteEnd> when pasting
+set t_BE=
 
-	nnoremap H 0
-	nnoremap L $
-	nnoremap J G
-	nnoremap K gg
-
-	map <tab> %
-
-	set backspace=indent,eol,start
-	set whichwrap+=<,>,h,l
-
-	nnoremap <Space> za
-	nnoremap <leader>z zMzvzz
-
-	nnoremap vv 0v$
-
-	set listchars=tab:\|\ 
-	nnoremap <leader><tab> :set list!<cr>
-	set pastetoggle=<F2>
-	set mouse=a
-	set incsearch
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-	cmap w!! w !sudo tee > /dev/null %
-
-" Make those folders automatically if they don't already exist.
-	if !isdirectory(expand(&undodir))
-			call mkdir(expand(&undodir), "p")
-	endif
-	if !isdirectory(expand(&backupdir))
-			call mkdir(expand(&backupdir), "p")
-	endif
-	if !isdirectory(expand(&directory))
-			call mkdir(expand(&directory), "p")
-	endif
-
-" Resize splits when the window is resized
-	au VimResized * :wincmd =
-
-	set modelines=1
-	set showmode
-	set history=700
-	set undofile
-	set undoreload=10000
-	set matchtime=3
-	set splitbelow
-	set splitright
-	set autowrite
-	set autoread
-	set shiftround
-	set title
-	set linebreak
-	set colorcolumn=+1
-
-" Enable filetype plugins
-	filetype plugin on
-	filetype indent on
-
-"Always show current position
-	set ruler
-
-"Clipboard stuff
-	set clipboard=unnamedplus
-
-" Height of the command bar
-	set cmdheight=2
-
-" Ignore case when searching
-	set ignorecase
-
-" When searching try to be smart about cases
-	set smartcase
-
-" Highlight search results
-	set hlsearch
-
-" Makes search act like search in modern browsers
-	set incsearch
-
+set nosc noru nosm
 " Don't redraw while executing macros (good performance config)
-	set lazyredraw
+set lazyredraw
+"set showmatch
+" How many tenths of a second to blink when matching brackets
+"set mat=2
+" Ignore case when searching
+set ignorecase
+" Be smart when using tabs ;)
+set smarttab
+" indents
+filetype indent on
+set shiftwidth=2
+set tabstop=2
+set ai "Auto indent
+set si "Smart indent
+set nowrap "No Wrap lines
+set backspace=start,eol,indent
+" Finding files - Search down into subfolders
+set path+=**
+set wildignore+=*/node_modules/*
 
-" For regular expressions turn magic on
-	set magic
+" Turn off paste mode when leaving insert
+autocmd InsertLeave * set nopaste
 
-" Show matching brackets when text indicator is over them
-	set showmatch
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
-" No annoying sound on errors
-	set noerrorbells
-	set novisualbell
-	set t_vb=
+" Add asterisks in block comments
+set formatoptions+=r
 
-" Language Specific
-	" Tabs
-		so ~/dotfiles/vim/sleuth.vim
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
-	" Typescript
-		autocmd BufNewFile,BufRead *.ts set syntax=javascript
-		autocmd BufNewFile,BufRead *.tsx set syntax=javascript
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
-	" Markup
-		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescript
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
 
+"-------------------------------------------------------------------------------
+" Cursor line
+"-------------------------------------------------------------------------------
 
-" File and Window Management 
-	inoremap <leader>w <Esc>:w<CR>
-	nnoremap <leader>w :w<CR>
+set cursorline
+"set cursorcolumn
 
-	inoremap <leader>q <ESC>:q<CR>
-	nnoremap <leader>q :q<CR>
+" Set cursor line color on visual mode
+highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
-	inoremap <leader>x <ESC>:x<CR>
-	nnoremap <leader>x :x<CR>
+highlight LineNr       cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
-	nnoremap <leader>e :Ex<CR>
-	nnoremap <leader>t :tabnew<CR>:Ex<CR>
-	nnoremap <leader>v :vsplit<CR>:w<CR>:Ex<CR>
-	nnoremap <leader>s :split<CR>:w<CR>:Ex<CR>
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
 
-" Return to the same line you left off at
-	augroup line_return
-		au!
-		au BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\	execute 'normal! g`"zvzz' |
-			\ endif
-	augroup END
+if &term =~ "screen"
+  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+endif
 
-" Auto load
-	" Triger `autoread` when files changes on disk
-	" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-	" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-	autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-	set autoread 
-	" Notification after file change
-	" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-	autocmd FileChangedShellPost *
-		\ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+"-------------------------------------------------------------------------------
+" Other plugins
+"-------------------------------------------------------------------------------
 
-" Future stuff
-	"Swap line
-	"Insert blank below and above
+" vim-go
+let g:go_disable_autoinstall = 1
 
-" Fix for: https://github.com/fatih/vim-go/issues/1509
+" vim-json
+let g:vim_json_syntax_conceal = 0
+
+" Status line
+if !exists('*fugitive#statusline')
+  set statusline=%F\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[L%l/%L,C%03v]
+  set statusline+=%=
+  set statusline+=%{fugitive#statusline()}
+endif
+
+" JSX
+let g:jsx_ext_required = 0
+
+" Tern
+" Disable auto preview window
+set completeopt-=preview
+
+" localvimrc
+let g:localvimrc_ask = 0
+
+"-------------------------------------------------------------------------------
+" Dein
+"-------------------------------------------------------------------------------
+
+let s:dein_dir = expand('~/.cache/dein')
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  let g:rc_dir = expand('~/.vim/rc')
+  let s:toml = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+if dein#check_install()
+  call dein#install()
+endif
 
 filetype plugin indent on
+
+"-------------------------------------------------------------------------------
+" DevIcons
+"-------------------------------------------------------------------------------
+
+set guifont=Sauce\ Code\ Pro\ Light\ Nerd\ Font\ Complete\ Windows\ Compatible:h11
+let g:webdevicons_enable_vimfiler = 1
+
+"-------------------------------------------------------------------------------
+" Color scheme
+"-------------------------------------------------------------------------------
+
+colorscheme solarized
+
+"-------------------------------------------------------------------------------
+" imports
+"-------------------------------------------------------------------------------
+
+if has("unix")
+  let s:uname = system("uname -s")
+  " Do Mac stuff
+  if s:uname == "Darwin\n"
+    source ~/.vimrc.osx
+  endif
+endif
+
+source ~/.vimrc.maps
+source ~/.vimrc.lightline
+
+set exrc
