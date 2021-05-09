@@ -21,8 +21,8 @@ prompt_install() {
 		elif [ -x "$(command -v pacman)" ]; then
 			sudo pacman -S $1
 		else
-			echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
-		fi 
+			echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)"
+		fi
 	fi
 }
 
@@ -73,10 +73,10 @@ check_default_shell() {
 
 echo "We're going to do the following:"
 echo "1. Grab dependencies"
-echo "2. Check to make sure you have zsh, vim, and tmux installed"
+echo "2. Check to make sure you have zsh, neovim, and tmux installed"
 echo "3. We'll help you install them if you don't"
 echo "4. We're going to check to see if your default shell is zsh"
-echo "5. We'll try to change it if it's not" 
+echo "5. We'll try to change it if it's not"
 
 echo "Let's get started? (y/n)"
 old_stty_cfg=$(stty -g)
@@ -84,7 +84,7 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-	echo 
+	echo
 else
 	echo "Quitting, nothing was changed."
 	exit 0
@@ -96,8 +96,8 @@ echo
 check_for_software ncurses-devel
 echo
 check_for_software zsh
-echo 
-check_for_software vim
+echo
+check_for_software neovim
 echo
 check_for_software tmux
 echo
